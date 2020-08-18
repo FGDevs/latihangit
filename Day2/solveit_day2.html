@@ -1,0 +1,24 @@
+<html>
+    <body>
+    <p id="demo" style="font-size:30px;"></p>
+    <script>
+        // Calculator *Square
+        var kalkulator = prompt ('Silahkan masukkan angka berapapun: ')
+        kalkulator = parseInt(kalkulator)
+        alert('Kuadrat dari '+kalkulator+' = '+ kalkulator**2)
+
+        // Calculator *Years,Months,Days
+        var days = prompt ('Silahkan masukkan jumlah hari yang anda ingin ketahui: ')
+        var tahun = 360
+        var bulan = 30
+        var minggu = 7
+        sumTahun = days/tahun
+        sumBulan = ((days%tahun)/bulan)
+        sumMinggu = (((days%tahun)%bulan)/minggu)
+        sumHari = (((days%tahun)%bulan)%minggu)
+        alert(`${days} hari = ${Math.floor(sumTahun)} tahun, ${Math.floor(sumBulan)} bulan, ${Math.floor(sumMinggu)} minggu, & ${Math.floor(sumHari)} Hari`)
+
+        document.getElementById('demo').innerHTML = Math.ceil(Math.random()*100)
+    </script>
+    </body>
+</html>

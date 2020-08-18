@@ -1,0 +1,31 @@
+<html>
+<script>
+        // Prices
+        var applePrice=15000
+        var orangePrice=10000
+        var grapePrice=5000
+
+        // User Input 
+        var apple = prompt ('Berapa kg apple yang kamu beli?')
+        apple = parseInt(apple)
+        var orange = prompt ('Berapa kg pisang yang kamu beli?')
+        orange = parseInt(orange)
+        var grape = prompt ('Berapa kg cokelat yang kamu beli?')
+        grape = parseInt(grape)
+        
+        alert ( `Payment details:\n 
+                apple: ${apple} x Rp ${applePrice},- = Rp ${apple*applePrice},
+                Pisang: ${orange} x Rp ${orangePrice},- = Rp ${orange*orangePrice},
+                Cokelat: ${grape} x Rp ${grapePrice},- = Rp ${grape*grapePrice},-\n\n
+                Total = Rp ${(apple*applePrice)+(orange*orangePrice)+(grape*grapePrice)},-` ) 
+        
+     
+        var Datang = prompt ('Jam berapa anda datang di tempat parkir?')
+        var Keluar = prompt ('Jam berapa anda keluar dari tempat parkir?')
+        Datang = parseInt(Datang)
+        Keluar = parseInt(Keluar)
+
+        alert ('Anda sudah parkir selama '+(Keluar-Datang)+' jam, '+
+                'total biaya parkir anda sebesar Rp '+((Keluar-Datang)*5000)+',-')
+</script>
+</html>

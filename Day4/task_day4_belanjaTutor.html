@@ -1,0 +1,29 @@
+<script>
+    alert('Selamat datang di toko buah kami')
+    var menuUtama
+    var kondisimenuutama=true
+    
+    while(kondisimenuutama){
+        do{
+            var kondisi=true
+            var menuUtama=prompt('Menu utama?\n1. Masuk\n2. Exit')
+            if(!(menuUtama==1||menuUtama==2)){
+                alert('Ulangin woy!')}
+        }while(!(menuUtama==1||menuUtama==2));
+        
+        if(menuUtama==1){
+            alert('Masuk ke halaman utama')
+
+            var kondisiApple=true
+            while(kondisiApple){
+                apple = parseInt(prompt('Berapa kg apel?'))
+                if(apple>apple){
+                    alert('Selamat Tinggal')
+                }else{
+                    alert('Selamat Tinggal')
+                    kondisimenuutama=false 
+                }
+        }
+    }
+}
+</script>

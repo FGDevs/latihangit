@@ -1,0 +1,74 @@
+<script>
+    var jenisKendaraan = prompt ('Jenis Kendaraan Anda:\n(pilih salah satu angka berikut)\n1. Mobil\n2. Motor')
+    if (jenisKendaraan == 1 || jenisKendaraan == 2){
+        var ampmMasuk = prompt ('Pagi/AM (00:00-12:00) atau Siang/PM (13:00-24:00)\n(pilih salah satu angka berikut)\n1. Pagi/AM\n2. Siang/PM')
+ 
+        if(ampmMasuk == 1 || ampmMasuk == 2){
+            var jamMasuk = prompt ('Jam berapa anda masuk lahan parkir?\n(masukkan HANYA angka 0-11)\n*contoh* 6\n Artinya: Anda masuk jam 6 (Pagi/AM) atau jam 6 (Siang/PM) ')
+            jamMasuk = parseInt(jamMasuk)
+
+            if(jamMasuk >= 0 && jamMasuk <= 11){
+                var ampmKeluar = prompt ('Pagi/AM (00:00-12:00) atau Siang/PM (13:00-24:00)\n(pilih salah satu angka berikut)\n1. Pagi/AM\n2. Siang/PM')
+            
+                if(ampmKeluar ==1 || ampmKeluar ==2){
+                    var jamKeluar = prompt ('Jam berapa anda keluar lahan parkir?\n(masukkan angka 0-11)')
+                    jamKeluar = parseInt(jamKeluar)
+
+                    // Biaya parkir 
+                    var mobilParkir  = 5000 // Biaya parkir mobil perjam (jika mobil parkir selama <= 2 jam)
+                    var mobilParkir2 = 2000 // Biaya parkir mobil perjam setelah parkir lebih dari 2 jam 
+                    var motorParkir  = 3000 // Biaya parkir motor perjam (jika motor parkir selama <= 2 jam)                    
+                    var motorParkir2 = 1000 // Biaya parkir motor perjam setelah parkir lebih dari 2 jam
+                    
+                    // Waktu Masuk (menghilangkan AM/PM)
+                    if(ampmMasuk == 1){ 
+                        jamMasuk=jamMasuk+0
+                    }else{ 
+                        jamMasuk=jamMasuk+12 } 
+                    
+                    // Waktu Keluar (menghilangkan AM/PM)
+                    if(ampmKeluar == 1){ 
+                        jamKeluar=jamKeluar+0
+                    }else{ 
+                        jamKeluar=jamKeluar+12 } // menghilangkan PM
+
+                    // Waktu parkir
+                    var lamaParkir  = jamKeluar - jamMasuk
+                    var lamaParkir2 = lamaParkir-2
+                    
+                    /*                
+                    console.log(jenisKendaraan)
+                    console.log(jamMasuk)
+                    console.log(jamKeluar)
+                    console.log(lamaParkir)
+                    console.log(lamaParkir2) 
+                    */
+                    
+                    // Biaya Parkir Mobil
+                    if (jenisKendaraan == 1 && lamaParkir <= 2){
+                        var biayaParkir = lamaParkir*mobilParkir
+                        alert ('Biaya parkir mobil anda selama '+lamaParkir+' jam adalah sebesar Rp '+biayaParkir+',00.\nTerimakasih sudah menggunakan jasa layanan parkir kami!')
+                    }else if (jenisKendaraan == 1 && lamaParkir >= 2){
+                        var biayaParkir = (2*mobilParkir)+(lamaParkir2*mobilParkir2)
+                        alert ('Biaya parkir mobil anda selama '+lamaParkir+' jam adalah sebesar Rp '+biayaParkir+',00.\nTerimakasih sudah menggunakan jasa layanan parkir kami!')
+                    }else if (jenisKendaraan == 2 && lamaParkir <= 2){
+                        var biayaParkir = lamaParkir*motorParkir
+                        alert('Biaya parkir motor anda selama '+lamaParkir+' jam adalah sebesar Rp '+biayaParkir+',00.\nTerimakasih sudah menggunakan jasa layanan parkir kami!')
+                    }else{
+                        var biayaParkir = (2*motorParkir)+(lamaParkir2*motorParkir2)
+                        alert('Biaya parkir motor anda selama '+lamaParkir+' jam adalah sebesar Rp '+biayaParkir+',00.\nTerimakasih sudah menggunakan jasa layanan parkir kami!')}
+                
+                    /*
+                    console.log(biayaParkir)
+                    */
+
+                }else{
+                    alert ('Anda hanya dapat mengisi dengan angka 1 (pagi/AM) atau 2 (siang/PM)')}
+            }else{
+                alert ('Anda hanya dapat mengisi dengan angka, antara angka 0 hingga angka 11')}
+        }else{
+            alert ('Anda hanya dapat mengisi dengan angka 1 (pagi/AM) atau 2 (siang/PM)')}
+    }else{
+        alert ('Anda hanya dapat mengisi dengan angka 1 (mobil) atau 2 (motor)')}
+
+</script>

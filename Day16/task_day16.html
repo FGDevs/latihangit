@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>God's List</title>
+    <style>
+        tr,td,table{
+            padding: 5px;    
+        }
+
+        #t01{
+            border-collapse: collapse;
+            border: 1px solid gray;
+            padding: 10px;
+            margin: 9px 2px    
+        } 
+        
+        .button {
+            background-color: #3d3d3d;
+            border: none;
+            color: white;
+            padding: 10px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 2px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1>GOD'S LIST</h1>
+
+        <fieldset>
+            <legend>Humans</legend>
+            
+            <table>
+                <tr>
+                    <td id>Name: </td>
+                    <td><input type="text" id="inputNama" placeholder="insert human name"></td>
+                </tr>
+                <tr>
+                    <td>Age: </td>
+                    <td><input type="number" id="inputUsia" placeholder="insert human age"></td>
+                </tr>
+                <tr>
+                    <td>Gender: </td>
+                    <td>
+                        <input type="radio" name="Gender" value="Man"> Man
+                        <input type="radio" name="Gender" value="Woman"> Woman
+                    </td>
+                </tr>
+                <tr>
+                    <td>Job: </td>
+                    <td><input type="text" id="inputPekerjaan" placeholder="insert human fate job"></td>
+                </tr>
+            </table>
+            &nbsp; &nbsp; &nbsp; 
+            <button class="button">Create</button>
+        </fieldset>
+
+        <table id="t01">
+            <thead>
+                <th id="t01">No.</th>
+                <th id="t01">Name</th>
+                <th id="t01">Age</th>
+                <th id="t01">Gender</th>
+                <th id="t01">Job</th>
+            </thead>
+            <tbody id="isitabel">
+
+            </tbody>
+        </table>
+ 
+    </center>
+</body>
+
+<script src="./task_day16.js"></script>
+</html>

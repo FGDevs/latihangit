@@ -1,0 +1,148 @@
+<script>
+alert('Selamat datang di toko buah kami')
+var menuUtama
+var cond_menuUtama=true
+
+
+class Barang{
+    constructor(_nama,_harga){
+        this.nama=_nama,
+        this.harga=_harga
+    }
+}
+
+class Buah extends Barang{
+    constructor(_nama,_harga,_stok){
+        super(_nama,_harga)
+        this.stok=_stok
+    }
+}
+
+class Cart extends Barang{
+    constructor(_nama,_harga,_qty){
+        super(_nama,_harga)
+        this.qty=_qty
+    }
+}
+
+let namaBuah = ['apple','anggur','jeruk']
+var cart=[]
+var buah = [
+    new Buah('apple',5000,10),
+    new Buah('jeruk',15000,9),
+    new Buah('anggur',5000,8),
+]   
+
+
+let hargaCart = [] //cartBuah = [] //cartHarga = [] //cartQty = []
+var hargaBuah = [1000, 2000, 3000]
+let stokBuah = [2,5,9]
+
+let tampilkanBuah=(condCart,arr)=>{
+    var output=''
+    for(let i=0;i<arr.length;i++){
+        if(kondisi){
+            output+=`${i+1}.${namaBuah[i]}:${hargaBuah[i]} stok ${stokBuah[i]}`
+        }else{}
+        
+
+    }
+    return
+}
+
+            let totalHarga=0
+            let output=''
+            for(let i=0;i<cartBuah.length;i++){
+                totalHarga+=((cart[i].harga)*(cart[i].qty))
+            }
+
+if(menuUtama===1){
+    do{
+        let menuBelanja_cond=true
+        let menuBelanja=prompt('1 --> Pilih Barang\n2 --> Lihat Keranjang')
+        if(menuBelanja===1){
+            // var output=''
+            // for(let i=0;i<namaBuah.length;i++){
+            //     output+=`${i+1}.${namaBuah[i]}:${hargaBuah[i]} stok ${stokBuah[i]}`
+            // }
+            let pilihanBelanja=prompt(`pilih aja bos:\n${tampilkanBuah(false,namaBuah)}`)
+            var indexCart
+            for(let j=0;j<cart.length;j++){
+                if(cart[j].nama==buah[pilihanBelanja-1].nama){
+                    indexCart=j
+                }
+            }
+            var i_qty=parseInt(promp('mau berapa?'))
+            if(qty>buah[pilihanBelanja-1].stok){
+                alert('stoknya kurang')
+            }else{
+                if(indexCart<0){
+                    cart.push(new Cart(buah[pilihanBelanja-1].nama,buah[pilihanBelanja-1].harga,qty))
+                    cartBuah.push(namaBuah[pilihanBelanja-1])
+                    cartHarga.push(hargaBuah[pilihanBelanja-1])
+                    cartQty.push(qty)
+                }else{ 
+                    cart[indexCart].qty+=qty
+                }
+                buah[pilihanBelanja-1].stok-=qty // decrease stock     
+            }
+        }else if(menuBelanja==2){
+            let totalHarga=0
+            let output=''
+            for(let i=0;i<cartBuah.length;i++){
+                totalHarga+=((cartHarga[i])*(cartQty[i]))
+            }
+
+            for(let i=0;i<cartBuah.length;i++){
+                output+=`${i+1}.${cartBuah[i]}:${cartHarga[i]} stok ${cartQty[i]}== ${cartQty[i]*cartHarga[i]}\n`
+
+            }
+            alert(output)
+            
+        }else{
+            if(cartBuah.length){
+                let output=''
+                for(let i=0;i<cartBuah.length;i++){
+                    output+=`${i+1}.${cartBuah[i]}:${cartHarga[i]} stok ${cartQty[i]}\n`
+                }
+                alert(output)
+            }else{
+                alert('Belanja dulu karena cart kosong')
+            }
+        }
+    }while(menuBelanja_cond)
+
+
+}else if(menuUtama===2){
+    let namaBuah_baru=prompt('masukkan nama buah?')
+    let hargaBuah_baru=prompt('masukkan harganya')
+    let stokBuah_baru=prompt('masukkan stok')
+    alert(`mau memasukkan ${namaBuah_baru} dengan harga Rp. ${hargaBuah_baru}.00 dengan stok ${stokBuah_baru}`)
+    let yakintidak=confirm('yakin enggak?')
+    if (yakintidak){
+        namaBuah.push(namaBuah_baru)
+        hargaBuah.push(hargaBuah_baru)
+        stokBuah.push(stokBuah_baru)
+        alert('Berhasil')
+    }else{
+        alert('oke deh gajadi')
+    }
+}else if(menuUtama===3){
+    var output=''
+    for(let i=0;i<namaBuah.length;i++){
+        output+=`${i+1}.${namaBuah[i]}:${hargaBuah[i]} stok ${stokBuah[i]}`
+    }
+    
+    let pilihedit
+    do{     // protect
+        pilihedit=prompt(`mau edit yang mana:\n${output}`)
+    }while(!(pilihedit>=1 && pilihedit<=namaBuah.length))
+    var namaBuah_edit=prompt(`ganti buah dari ${namaBuah[pilihedit-1]} jadi?`)
+    var hargaBuah_edit=prompt(`ganti harga buah dari ${hargaBuah[pilihedit-1]} jadi?`)
+    var stockBuah_edit=prompt(`ganti stok buah dari ${stokBuah[pilihedit-1]} jadi?`)
+    namaBuah.splice(pilihedit-1,1,namaBuah_edit)
+    stockBuah.splice(pilihedit-1,1,stockBuah_edit)
+    hargaBuah.splice(pilihedit-1,1,hargaBuah_edit)
+    alert('Berhasil')
+}
+</script>

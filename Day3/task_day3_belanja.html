@@ -1,0 +1,66 @@
+<html>
+    <script>
+        // Databases
+        // Item Stocks:
+        var appleStock  = 10
+        var orangeStock = 5
+        var grapeStock  = 10
+        var sappleStock = false
+        var sorangeStock= false
+        var sgrapeStock = false
+
+        // User Input 
+        // Item : Apple
+        var apple   = prompt   ('Berapa kg apple yang kamu beli?')
+        apple       = parseInt (apple)
+            if(apple<=appleStock) {sappleStock = true} // Check apple's stock
+            else {
+                alert(`Maaf, hanya tersedia ${appleStock} kg apple untuk saat ini`)}
+        
+        // Item : Orange
+        var orange  = prompt   ('Berapa kg orange yang kamu beli?')
+        orange      = parseInt (orange)
+            if(orange<=orangeStock) {sorangeStock = true} // Check orange's stock
+            else{
+                alert(`Maaf, hanya tersedia ${orangeStock} kg orange untuk saat ini`)}
+
+        // Item : Grape
+        var grape   = prompt   ('Berapa kg grape yang kamu beli?')
+        grape       = parseInt (grape)
+            if(grape<=grapeStock) {sgrapeStock = true} // Check grape's stock
+            else{
+                alert(`Maaf, hanya tersedia ${grapeStock} kg grape untuk saat ini`)}
+      
+        // Item Prices:
+        var applePrice  = 10200
+        var orangePrice = 7100
+        var grapePrice  = 13500
+        var totalPrice  = (apple*applePrice)+(orange*orangePrice)+(grape*grapePrice)  // Total Price
+
+        // Check if the requirement meet (item's input > 0 & item's input <= item's stock)
+        if(apple>0&&orange>0&&grape>0&&sappleStock==true&&sorangeStock==true&&sgrapeStock==true){ 
+            alert (
+                'Payment details:\nApple : '+apple+' x Rp '+applePrice+',00 = Rp '+apple*applePrice+',00 \nOrange : '+orange+' x Rp '+orangePrice+',00 = Rp '+orange*orangePrice+',00 \nGrape : '+grape+' x Rp '+grapePrice+',00 = Rp '+grape*grapePrice+',00 \n\nTotal Belanja Anda = Rp '+totalPrice+',00')
+            
+            var userMoney = prompt ('Uang yang akan dibayarkan?') // If true, then user input for the amount of money that will be paid
+            userMoney = parseInt (userMoney)
+
+            if(userMoney){
+                console.log('Masuk'+userMoney)
+                
+                var returnMoney = userMoney-totalPrice
+                
+                if(returnMoney > 0){
+                    alert ('Kembalian anda sebesar Rp '+returnMoney+',00. Terima kasih telah berbelanja di toko kami.')
+                }else if(returnMoney == 0){
+                    alert ('Terima kasih telah berbelanja di toko kami.')
+                }else{
+                    alert ('Maaf transaksi dibatalkan, dibutuhkan uang sebesar Rp '+(returnMoney*-1)+',00 lagi untuk memenuhi biaya belanja anda')
+                }
+            }else{
+                console.log('Keluar'+userMoney)
+                alert ('Format nominal yang anda masukkan kurang tepat, silahkan di isi kembali detail belanjaan anda') }
+        }else{ // If it doesn't meet the requirement then:
+            alert ('Input anda kurang benar, silahkan di isi kembali detail belanjaan anda')}
+    </script>
+</html>

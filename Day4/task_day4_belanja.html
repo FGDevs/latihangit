@@ -1,0 +1,92 @@
+<html>
+    <script>
+        /* Databases */
+        // Item Prices:
+        var applePrice  = 10200
+        var orangePrice = 7100
+        var grapePrice  = 13500
+
+        // var sappleStock = false
+        // var sorangeStock= false
+        // var sgrapeStock = false
+        // var appleStock2 = appleStock-apple
+        // var orangeStock2 = orangeStock-orange
+        
+        /* Welcome page */
+        alert ('Selamat Datang di Toko Buah Camy')     
+        
+        do{
+            var statBelanja = parseInt(prompt('Apakah anda ingin berbelanja?\n(isi kolom dibawah dengan nomor yang sesuai)\n1 (Iya)\n2 (Tidak)'))
+            if(statBelanja !== 1 && statBelanja !==2){
+                alert('Maaf\nAnda hanya dapat memilih angka "1" atau "2".\n\nSilahkan dipilih kembali.')
+            }else{}
+        }while(statBelanja !== 1 && statBelanja !== 2)
+        
+        //Item Stocks:
+        var appleStock  = 10
+        var orangeStock = 5
+        var grapeStock  = 10
+        
+        /* Start loop "Shopping Times" */
+        do{
+            if(statBelanja == 1){
+                var exitInit = false  // Stat exit
+                alert ('Silahkan di lengkapi detail belanjaan anda')
+                
+                /* User Input Cart Details & Checking Item's Stock in Cart */
+                do{ // Apple
+                    var apple = parseInt(prompt('Berapa kg apple yang kamu beli?'))
+                    if(appleStock<apple){
+                        alert(`Maaf, hanya tersedia ${appleStock} kg apple untuk saat ini`)
+                    }else if(!(apple>=0)){
+                        alert('Hanya dapat mememasukkan angka')
+                    }else{}
+                }while(appleStock<apple || !(apple>=0))
+
+                do{ // Orange
+                    var orange = parseInt(prompt('Berapa kg orange yang kamu beli?'))
+                    if(orangeStock<orange){
+                        alert(`Maaf, hanya tersedia ${orangeStock} kg orange untuk saat ini`)
+                    }else{}
+                }while(orangeStock<orange)
+            
+                do{ // Grape
+                    var grape = parseInt(prompt('Berapa kg grape yang kamu beli?'))
+                    if(grapeStock<grape){
+                        alert(`Maaf, hanya tersedia ${grapeStock} kg grape untuk saat ini`)
+                    }else{}
+                }while(grapeStock<grape)
+                
+                var totalPrice  = (apple*applePrice)+(orange*orangePrice)+(grape*grapePrice)  // Total Price
+
+                alert ('Payment details:\nApple : '+apple+' x Rp '+applePrice+',00 = Rp '+apple*applePrice+',00 \nOrange : '+orange+' x Rp '+orangePrice+',00 = Rp '+orange*orangePrice+',00 \nGrape : '+grape+' x Rp '+grapePrice+',00 = Rp '+grape*grapePrice+',00 \n\nTotal Belanja Anda = Rp '+totalPrice+',00')
+                
+                // do{
+                //     var userMoney = parseInt(prompt('Uang yang akan dibayarkan?'))
+                //     console.log(typeof(userMoney))
+                //     var returnMoney = userMoney-totalPrice
+
+                //         if(returnMoney < 0){
+                //             alert ('Maaf transaksi dibatalkan, dibutuhkan uang sebesar Rp '+(returnMoney*-1)+',00 lagi untuk memenuhi biaya belanja anda')
+                //         }else if(returnMoney == 0){
+                //             alert ('Terima kasih telah berbelanja di toko kami.')
+                //         }else if(returnMoney > 0){
+                //             alert ('Terima kasih telah berbelanja di toko kami.\n\nKembalian anda sebesar :  Rp '+returnMoney+',00.')
+                //         }else{
+                //         alert ('Maaf anda hanya dapat memasukkan nominal angka pembayaran anda.')}
+                // }while(returnMoney < 0 || userMoney !== Number)
+                // alert ('Apakah anda ingin berbelanja kembali?') 
+            }else{
+                exitInit = true}
+
+            if(exitInit === false){
+                var statBelanja2 = parseInt(prompt('Apakah anda akan kembali belanja?\n1 (Iya)\n2 (Tidak)'))
+                if(statBelanja2 == 2){
+                    alert ('Terima Kasih! Silahkan datang kembali.')}
+                else{}
+            }else{alert ('Terima Kasih! Silahkan datang kembali.')}
+        }while(statBelanja2 === 1)
+
+        
+    </script>
+</html>

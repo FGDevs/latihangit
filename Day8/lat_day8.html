@@ -1,0 +1,60 @@
+<script>
+    var database=[
+        {name:'dino',password:'gggg',role:'admin'},
+        {name:'dino',password:'gggg',role:'user'}
+    ]
+
+    // if(awal==1){
+    //     // suruh masukkan username
+    //     var userName=prompt('Masukan username anda')
+    //     // cek username
+    //     if(){
+    //         // Jika tidak ada nama username terdaftar 
+    //         alert('Nama anda belum terdaftar didata kami, silahkan register terlebih dahulu') 
+    //     }else{
+    //         // Jika ada / sesuai
+    //         var password=prompt('Silahkan masukan password anda')
+    //         if(){
+    //             //jika salah ulang
+    //             alert('password atau username anda tidak benar')
+    //         }else{
+    //             alert('selamat datang '/*namausername*/)
+    //         }
+    //     }
+    // }else{
+    //     var regName=prompt('Masukkan nama yang anda inginkan')
+    //     // push nama 
+        
+    // }
+    var menu=true
+
+    while(menu){
+        var awal=prompt(`1. Login (?)\n2. Register`)
+        if(awal==1){
+            var userName=prompt('masukan username')
+            var userPass=prompt('masukkan password')
+            var user=database.filter((val)=>val.name==inputloginname && val.password==inputloginpass)
+
+        }else{
+            var regName=prompt('masukan username')
+            var regPass=prompt('masukan password')
+            database.push({name:regName,password:regPass,role:'user'})
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

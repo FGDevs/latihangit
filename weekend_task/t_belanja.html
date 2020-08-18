@@ -1,0 +1,118 @@
+<script>
+    let kondisiBelanja = true 
+    let jenisBuah = ['Apel','Lemon','Kiwi','Anggur','Mangga']
+    let stockBuah = [10 , 15 , 8 , 10, 13]
+    let hargaBuahKg = [9000 , 13500 , 9700 , 12000 , 6300]
+    let cartBuah = []
+    
+    
+    while(kondisiBelanja){ // Main loop
+        /* User input on main menu */
+        let mainMenu = parseInt(prompt('Selamat Datang di Toko Buah Camy\n(Mohon isi kolom dengan pilihan angka berikut)\n1 --> List Buah & Harga\n2 --> Beli Buah\n3 --> Edit Keranjang\n4 --> Pembayaran\n5 --> Keluar'))
+        
+        /* When user input on main menu is not a number between 1-5, give it alert and repeat */
+        while(!(mainMenu>0 && mainMenu<=5)){
+            alert ('Kolom hanya dapat diisi dengan angka pilihan, silahkan diisi kembali')
+            mainMenu = parseInt(prompt('Selamat Datang di Toko Buah Camy\n(Mohon isi kolom dengan pilihan angka berikut)\n1 --> List Buah & Harga\n2 --> Beli Buah\n3 --> Edit Keranjang\n4 --> Pembayaran\n5 --> Keluar'))           
+        }
+        
+        /* When user input on main menu is number 1 (seing fruit types, quantity, & price) */
+        if(mainMenu==1){
+            alert (`List Buah & Harga\n1. ${jenisBuah[0]}: |${stockBuah[0]}| Rp ${hargaBuahKg[0]}\n2. ${jenisBuah[1]}: |${stockBuah[1]}| Rp ${hargaBuahKg[1]}\n3. ${jenisBuah[2]}: |${stockBuah[2]}| Rp ${hargaBuahKg[2]}\n4. ${jenisBuah[3]}: |${stockBuah[3]}| Rp ${hargaBuahKg[3]}\n5. ${jenisBuah[4]}: |${stockBuah[4]}| Rp ${hargaBuahKg[4]}`)
+        }else{}
+        
+        /* When user input on main menu is number 2 (chosing fruit) */
+        if(mainMenu==2){
+            let lihatBuah=true
+            while(lihatBuah){
+                let pilihBuah = prompt(`Mau beli buah apa?(isi kolom berikut dengan nomor buah yang ingin dibeli)\n1 --> ${jenisBuah[0]}\n2 --> ${jenisBuah[1]}\n3 --> ${jenisBuah[2]}\n4 --> ${jenisBuah[3]}\n5 --> ${jenisBuah[4]}\n6 --> Menu Utama\n7 --> Keluar`)
+                
+                // User input on fruit list 
+                while(!(pilihBuah>0 && pilihBuah<=7)){
+                    alert ('A. Kolom hanya dapat diisi dengan angka pilihan, silahkan diisi kembali')  
+                    let pilihBuah = prompt(`Mau beli buah apa?\n(isi kolom berikut dengan nomor buah yang ingin dibeli)\n1 --> ${jenisBuah[0]}\n2 --> ${jenisBuah[1]}\n3 --> ${jenisBuah[2]}\n4 --> ${jenisBuah[3]}\n5 --> ${jenisBuah[4]}\n6 --> Menu Utama\n7 --> Keluar`)
+                }
+                // Prevent user from inputing alphabet and unlisted number
+                
+                // User input on selected fruit
+                if(pilihBuah==6){
+                    lihatBuah=false
+                }else if(pilihBuah==7){
+                    alert ('Terima kasih, silahkan datang kembali')
+                    lihatBuah=false
+                    kondisiBelanja = false
+                }else{
+                    let jumlahBuahkondisi=true   
+                    while(jumlahBuahkondisi){
+                        let jumlahBuah = parseInt(prompt('Mau beli berapa kg?'))
+                        
+                        while(!(jumlahBuah>0)){ 
+                            alert('B. Kolom hanya dapat diisi dengan angka')
+                            let jumlahBuah = parseInt(prompt('Mau beli berapa kg?')) 
+                        }
+                        // Prevent user from inputing alphabet and value lower than 0
+
+                        if(pilihBuah==1){
+                            if(jumlahBuah<stockBuah[0]){
+                                cartBuah[0]=jumlahBuah
+                                console.log(cartBuah[0])
+                                jumlahBuahkondisi=false
+                            }else{
+                                alert(`Maaf hanya terdapat ${stockBuah[0]} kg untuk saat ini`)
+                            }
+                        }else if(pilihBuah==2){
+                            if(jumlahBuah<stockBuah[1]){
+                                cartBuah[1]=jumlahBuah
+                                console.log(cartBuah[1])
+                                jumlahBuahkondisi=false
+                            }else{
+                                alert(`Maaf hanya terdapat ${stockBuah[1]} kg untuk saat ini`)
+                            }
+                        }else if(pilihBuah==3){
+                            if(jumlahBuah<stockBuah[2]){
+                                cartBuah[2]=jumlahBuah
+                                console.log(cartBuah[2])
+                                jumlahBuahkondisi=false
+                            }else{
+                                alert(`Maaf hanya terdapat ${stockBuah[2]} kg untuk saat ini`)
+                            }
+                        }else if(pilihBuah==4){
+                            if(jumlahBuah<stockBuah[3]){
+                                cartBuah[3]=jumlahBuah
+                                console.log(cartBuah[3])
+                                jumlahBuahkondisi=false
+                            }else{
+                                alert(`Maaf hanya terdapat ${stockBuah[3]} kg untuk saat ini`)
+                            }
+                        }else if(pilihBuah==5){
+                            if(jumlahBuah<stockBuah[4]){
+                                cartBuah[4]=jumlahBuah
+                                console.log(cartBuah[4])
+                                jumlahBuahkondisi=false
+                            }else{
+                                alert(`Maaf hanya terdapat ${stockBuah[4]} kg untuk saat ini`)
+                            }
+                        }
+                    }    
+                }
+            }
+        }else if(mainMenu==3){
+            let detailCart=''
+            for(i=0;i<=jenisBuah.length-1;i++){
+                if(cartBuah[i]>0){
+                    detailCart=detailCart+'\n'+jenisBuah[i]+': '+cartBuah[i]+' kg. Jumlah biaya: Rp '+(cartBuah[i]*hargaBuahKg[i])+',00'}
+            }
+            let totalPrice = (cartBuah[0]*hargaBuahKg[0])+(cartBuah[1]*hargaBuahKg[1])+(cartBuah[2]*hargaBuahKg[2])+(cartBuah[3]*hargaBuahKg[3])+(cartBuah[4]*hargaBuahKg[4])    
+            let ubahMenu=prompt('Detail belanja anda saat ini'+detailCart+'\n Total Belanja: '+totalPrice+',00\n Ada yang mau diubah?\n(isi kolom dengan angka 1 atau 2)\n1 --> Hapus Buah\n2 --> Ubah banyak buah yang dibeli')
+            while(!(ubahMenu==1 || ubahMenu ==2)){
+
+                ubahMenu=prompt('Detail belanja anda saat ini'+detailCart+'\n Total Belanja: '+totalPrice+',00\n Ada yang mau diubah?\n(isi kolom dengan angka 1 atau 2)\n1 --> Hapus Buah\n2 --> Ubah banyak buah yang dibeli')
+            }
+        }else if(mainMenu==4){
+
+        }else if(mainMenu==5){
+            alert ('Terima kasih, silahkan datang kembali')
+            kondisiBelanja = false
+        }else{}
+    } 
+</script>

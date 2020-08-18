@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E Commerce Sederhana</title>
+    <style>
+        tr, td, table{
+            border: 1px solid gray;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>E Commerce Sederhana</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Nama</th>
+                    <th>Harga</th>
+                    <th>Gambar</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id='tableatas'>  
+            
+            </tbody>
+        </table>
+        <h1 id="Cart"></h1>
+        <table id='userCart'>
+
+        </table>
+        <br>
+        <div id='checkout'>
+
+        </div>
+        <div id='timer'></div>
+        <div id='input'></div>
+    </center>
+</body>
+<script>
+    class Product{
+        constructor(a,b,c){
+            this.nama=a
+            this.harga=b
+            this.gambar=c
+        }
+    } 
+
+    var product=[
+        new Product('kuaci',10000,'https://ecs7.tokopedia.net/img/cache/200-square/product-1/2017/8/1/16158571/16158571_57047495-cd96-4803-8402-c53e4c2419b6_300_360.web'),
+        new Product('susu',5000,'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//91/MTA-3981241/ultra_ultra-milk-1-ltr-full-cream-plain-susu-cair-------_full02.jpg')
+    ]
+
+    var timer
+    var time=4
+    var cart=[]
+
+    const tampilkanGambar=()=>{
+       document.getElementById('tableatas').innerHTML=product.map((val,index)=>{
+            return (`
+                    <tr>
+                        <td>${index+1}</td>
+                        <td>${val.nama}</td>
+                        <td>${val.harga}</td>
+                        <td><img src=${val.gambar} alt=${val.nama} height='150></td>
+                        <td><button onclick='addtoCart(${index})'>Add to Cart</button></td>
+                    </tr>
+            `)
+       }).join('') 
+    }
+
+    const checkedCart=()=>{
+        if(cart.length){
+            var output=''
+            cart.forEach((val,index)=>{
+                output+=`
+                    <tr>
+                        <td>${index+1}</td>
+                        <td>${val.nama}</td>
+                        <td>${val.harga}</td>
+                        <td><img src=${val.gambar} alt=${val.nama} height='150></td>
+                        <td><button onclick='addtoCart(${index})'>Add to Cart</button></td>
+                    </tr>
+            `})
+            
+            document.getElementById('comCart')
+            document.getElementById('checkout').innerHTML=
+            document.getElementById('Cart').innerHTML=`Total belanja anda ada ${cart.length} total biayanya sebesar ${totalHarga} `
+        }else{
+            document.getElementById('Cart').innerHTML='Cart Kosong'
+        }
+    }
+
+    var totalHarga=()=>{
+        var output=0
+        cart.forEach((val)=>{
+            output+=val.harga
+        })
+    }
+
+    const addtoCart=(index)=>{
+        cart.push(product[index])
+        checkedCart()
+    }
+    
+    let deleteCart=(index)=>{
+        cart.splice(index,1)
+        checkedCart()
+    }
+
+    
+    let checkout=()=>{
+        var reminder=confirm('Sudah yakin ?')
+        if(reminder){
+            document.getElementById('timer').innerHTML=`waktu tersisa ${time}`
+            document.getElementById('input').innerHTML=`<input type='number' id='bayar'/>
+                                                        <button onclick='bayar()'>Pay</button>`
+            timer=setInterval(()=>{
+                if(timer<2){
+                    clear()
+                }else{
+                    time--
+                    document.getElementById('timer').innerHTML=`waktu tersisa ${time}`
+                }
+            },1000)
+            }else{
+                alert('ok')
+            }
+        }
+    
+    const bayar=()=>{
+        var input=document.getElementById('bayar').value
+        if(input<totalHarga()){
+            alert('kurang woy '+(totalHarga()-input))
+            var jadinggak=confirm('jadi enggak')
+        }
+    }
+    
+    tampilkanGambar()
+    checkedCart()
+
+</script>
+</html>
